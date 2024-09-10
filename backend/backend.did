@@ -1,0 +1,29 @@
+type QuizQuestion = 
+ record {
+   answers: vec text;
+   correctAnswerIndex: nat;
+   id: nat;
+   question: text;
+ };
+type GameInfo = 
+ record {
+   description: opt text;
+   developer: text;
+   releaseDate: text;
+   title: text;
+ };
+type GalleryImage = 
+ record {
+   caption: text;
+   id: nat;
+   url: text;
+ };
+service : {
+  getAverageRating: () -> (opt float64) query;
+  getGalleryImages: () -> (vec GalleryImage) query;
+  getGameInfo: () -> (GameInfo) query;
+  getQuizQuestions: () -> (vec QuizQuestion) query;
+  getRatings: () -> (vec nat) query;
+  submitQuizAnswer: (nat, nat) -> (bool);
+  submitRating: (nat) -> ();
+}
